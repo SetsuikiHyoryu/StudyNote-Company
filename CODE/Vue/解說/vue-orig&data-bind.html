@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 使用服務器地址引入Vue庫 -->
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="vue-test">
+        <!-- 
+            上接 1. 數據綁定 
+
+            - HTML中使用雙大括號語法接收data字段中的數據。
+            - 大擴號中接收的是new出來的Vue()對象（實例）。
+              - 相當於`Vue().msg`。
+            - 大擴號中寫入的是JS代碼
+            - 這就是一個HTML模版。
+        -->
+        {{ msg }}
+
+        <!-- 可進行簡單運算（如四則、大小與三目。if while不可） -->
+        {{ age > 60 ? "老人" : "青年" }}
+
+        <!-- 可做字符串拼接 -->
+        {{ firstName + " " + lastName}}
+
+        <!-- 可調用函數 -->
+        {{ fullName.split(" ")[1] }}
+
+        <br>
+
+        <!-- 調用getFullName函數 -->
+        {{ getFullName() }}
+
+        <!-- 傳參調用Vue中定義的函數 -->
+        {{ getFullNameByData(firstName, lastName) }}
+
+
+    </div>
+    <script>
+        // 全局中會多出Vue變量。
+        // 該變量是一個構造函數，參數是一個JS對象。
+        new Vue({
+
+            // 對象中有一個屬性名和一個屬性值(要控制的HTML代碼) 。
+            // 作用相當於使用getDocument。
+            el: "#vue-test",
+
+            // Vue將JS對象中的内容變成了一個HTML模版。
+            // 模版中規定了一些可以供我們使用的語法。
+
+            // 1. 數據綁定（以往通過獲取DOM的節點對其屬性進行操作）
+            // 數據也定義在Vue的構造函數中。
+
+            // date字段也是一個對象。
+            data: {
+                // 變量名 ： 值
+                msg: "Hello World!",
+                age: 80,
+                lastName: "zhang",
+                firstName: "san",
+                fullName: "zhang san"
+            },
+
+            // 定義方法
+            methods: {
+                getFullName: function() {
+                    //this相當於Vue()實例。
+                    return this.firstName + " " + this.lastName;
+                },
+
+                //也可在調用時傳參
+                getFullNameByData: function(first, last) {
+                    return first + " " + last;
+                }
+
+                // 注意在ES6中使用"=>"定羲的函數時，其中的this將指向調用這個函數的對象，因爲調用者是Vue的底層代碼，所以結果是我們不可控的。所以不要使用"=>"定羲函數。
+            }
+        });
+    </script>
+</body>
+
+</html>

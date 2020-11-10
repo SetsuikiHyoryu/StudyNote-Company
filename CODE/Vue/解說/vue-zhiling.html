@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 使用服務器地址引入Vue庫 -->
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- 引入網址 -->
+        <a href="http://www.google.co.jp">原生引入網址</a>
+
+        <!-- 使用Vue -->
+        <!-- 錯誤演示 
+            - 以下這樣寫會被直接認爲是輸入了“{{ url }}”。
+              - 因爲屬性的右邊一定會被判定爲字符串。
+        -->
+        <a href="{{ url }}">使用Vue引入的錯誤演示</a>
+
+        <!-- Vue指令
+            - 告訴DOM應該做什麼。
+              - 這裏是告訴DOM綁定一個數據到屬性上。
+            - 語法
+              - 在HTML元素標簽中
+              - v-指令名:指令的參數（想綁定的屬性）=指令的表逹式
+              - 有些指令沒有指令參數
+        -->
+        <a v-bind:href="url">使用Vue指令正確引入</a>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                url: "http://www.google.co.jp"
+            }
+        });
+    </script>
+</body>
+
+</html>

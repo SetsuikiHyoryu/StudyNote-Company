@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 使用服務器地址引入Vue庫 -->
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- 綁定title，使鼠標懸停於DOM節點時顯示電影名稱 -->
+    <div id="app" v-bind:title="movieName">
+        <!-- 輸出一個電影的名字和上映日期 -->
+        {{ movieName + "(" + onAir + ")" }} -
+        <!-- 判斷一部電影是否是新電影：> 2000爲新，反之爲舊 -->
+        <!-- {{ onAir > 2000 ? "新電影" : "舊電影" }} -->
+        {{ checkYear() }}
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+
+            data: {
+                movieName: "上甘嶺",
+                onAir: 1956,
+            },
+
+            methods: {
+                checkYear: function() {
+                    return this.onAir > 2000 ? "新電影" : "舊電影";
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
