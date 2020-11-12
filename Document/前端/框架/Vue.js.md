@@ -76,53 +76,76 @@
 
 ### 數據綁定
 
-- 參見`vue-orig&data-bind.html`文件。
+- 參見[`vue-orig&data-bind.html`][orig-bind]文件。
 
 ### 指令調用Vue對象
 
 - 相對於`{{ Vue對象中的内容 }}`這種寫法。
-- 參見`vue-zhiling.html`文件。
+- 參見[`vue-zhiling.html`][zhiling]文件。
 
 ### 數據綁定與指令的練習
 
-- 參見`data-bind&指令.html`文件。
+- 參見[`data-bind&指令.html`][zhiling-try]文件。
 
 ### v-on指令——事件的使用及事件修飾符
 
-- 參見`v-on.html`文件。
-- 參見`event-modifiers.html`文件。
+- 參見[`v-on.html`][on]文件。
+- 參見[`event-modifiers.html`][modifiers]文件。
 
 ### v-on指令綁定事件及事件修飾符的練習
 
-- 參見`v-on&event-modifiers.html`文件。
+- 參見[`v-on&event-modifiers.html`][on-modifiers-try]文件。
 
 ### 雙向數據綁定v-model
 
-- 參見`two-way-data-bind.html`文件。
+- 參見[`two-way-data-bind.html`][twoWay]文件。
 
 ### 把數據變爲DOM節點
 
-- 參見`data-to-node.html`文件。
+- 參見[`data-to-node.html`][dataToNode]文件。
 
 #### v-if條件渲染
 
-- 參見`v-if.html`文件。
+- 參見[`v-if.html`][if]文件。
+
+#### v-cloak短時隠藏節點
+
+- 參見[`v-cloak.html`][cloak]文件。
 
 ### v-for循環列表渲染
 
-- 參見`v-for-multiple-times-render.html`文件。
+- 參見[`v-for-multiple-times-render.html`][for]文件。
 
 #### 注意事項
 
-- 參見`v-for-notice.html`文件。
-- 參見`v-for-notice2.html`文件。
+- 參見[`v-for-notice.html`][for-notice]文件。
+- 參見[`v-for-notice2.html`][for-notice2]文件。
 
 ### 雙向綁定(v-model)、條件渲染(v-if)、列表渲染(v-for)的練習
 
-- 參見`two-way&v-if&v-for.html`文件。
+- 參見[`two-way&v-if&v-for.html`][twoWay-if-for-try]文件。
 
 ---
 
 ## 參考資料
 
 - [主流框架 vue.js 快速入门 系列视频教程](https://www.youtube.com/watch?v=cMB-Ustw53s&list=PL9nxfq1tlKKm7rafYCLfGgymd-LRfzGEM&t=3s)
+
+<!-- 聲明外鏈 -->
+<!-- 解說 -->
+[orig-bind]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/vue-orig%26data-bind.html
+[zhiling]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/vue-zhiling.html
+[on]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/v-on.html
+[modifiers]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/event-modifiers.html
+[twoWay]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/two-way-data-bind.html
+[dataToNode]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/data-to-node.html
+[if]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/v-if.html
+[cloak]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/v-cloak.html
+[for]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/v-for-multiple-times-render.html
+[for-notice]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/v-for-notice.html
+[for-notice2]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/v-for-notice2.html
+
+<!-- 練習 -->
+[zhiling-try]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E7%B7%B4%E7%BF%92/data-bind%26%E6%8C%87%E4%BB%A4.html
+[on-modifiers-try]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E7%B7%B4%E7%BF%92/v-on&event-modifiers.html
+[twoWay-if-for-try]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E7%B7%B4%E7%BF%92/two-way&v-if&v-for.html
