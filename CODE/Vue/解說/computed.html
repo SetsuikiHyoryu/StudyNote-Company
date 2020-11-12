@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ num }}</p>
+        <p>{{ fullName2 }}</p>
+        <button v-on:click="num++">add</button>
+
+        <!-- 希望FullName改變時，First和Lirst Name跟著一起變。 -->
+        <!-- 此時FullName需要寫成一個對象（見fullName2）。 -->
+        <!-- 執行set時如果修改了get中用到的參數，那麼get也會再次被調用。 -->
+        <button v-on:click="changeFullName">Change Full Name</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                num: 0,
+                firstName: "三",
+                lastName: "張"
+            },
+
+            /* 
+            - Vue對象不會檢查自己的方法中有什麼代碼，所以衹要在DOM中渲染過任何方法，那麼Vue對象中的任何内容變動時都會執行一遍DOM中渲染過的方法。
+            
+            這樣很費資源，解決方法是使用計算屬性computed（Vue會分析計算屬性中的代碼），它和methods在寫法上的的區别在於DOM節點中可以不寫方法的執行式，即不用加“()”。
+            
+            - 計算屬性還有緩存的功能，即渲染過一次後同一節點内的下次調用不會再次渲染。而methods會再次渲染。 */
+            computed: {
+                fullName1: function() {
+                    return this.lastName + " " + this.firstName;
+                },
+
+                // computed中寫入的對象有兩個定義好的屬性，get和set
+                fullName2: {
+                    // 當我們在獲取this.fullName2（或{{ fullName2 }}）的值的時候會走get函數。
+                    get: function() {
+                        console.log("我執行了get");
+                        return this.lastName + " " + this.firstName;
+                    },
+
+                    // 當我們在設置this.fullName2（或{{ fullName2 }}）的值的時候會走set函數。形參可自定義。
+                    set: function(newValue) {
+                        // 以空格爲界把字符串變爲數組
+                        var arr = newValue.split(" ")
+                        this.firstName = arr[1];
+                        this.lastName = arr[0];
+                    }
+                }
+            },
+
+            methods: {
+                changeFullName: function() {
+                    this.fullName2 = "李 四"
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

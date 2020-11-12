@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+    <style>
+        .shape {
+            float: left;
+            height: 5rem;
+            margin: 1rem;
+            width: 5rem;
+        }
+        
+        .circle {
+            background: red;
+            border-radius: 50%;
+        }
+        
+        .square {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <span class="shape circle"></span> -->
+
+        <!-- 通過顯示或隠藏類來改變樣式 -->
+        <!-- 以下這個例子渲染了兩個DOM，v-bind綁定的class對象中的屬性名如果接收到false的值，則不添加這個對象中寫入的屬性名 -->
+        <!-- <span v-for="shape in shapes" class="shape" v-bind:class="{circle: shape.isRound, square: !shape.isRound}"></span> -->
+
+        <!-- 改變類的名字改變樣式 -->
+        <span v-for="shape in shapes" class="shape" v-bind:class="[shape.className]"></span>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                shapes: [{
+                    // isRound: true
+                    className: "circle"
+                }, {
+                    // isRound: false
+                    className: 'square'
+                }]
+            }
+        });
+    </script>
+</body>
+
+</html>

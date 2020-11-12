@@ -74,9 +74,10 @@
 
 ## 語法
 
-### 數據綁定
+### 數據綁定v-bind
 
 - 參見[`vue-orig&data-bind.html`][orig-bind]文件。
+- `v-bind`因爲頻繁使用，所以可以直接以冒號代替。
 
 ### 指令調用Vue對象
 
@@ -91,6 +92,7 @@
 
 - 參見[`v-on.html`][on]文件。
 - 參見[`event-modifiers.html`][modifiers]文件。
+- `v-on`因爲頻繁使用，所以可以以`@`代替。
 
 ### v-on指令綁定事件及事件修飾符的練習
 
@@ -125,6 +127,41 @@
 
 - 參見[`two-way&v-if&v-for.html`][twoWay-if-for-try]文件。
 
+### 計算屬性computed
+
+- 參見[`computed.html`][computed]文件。
+
+### watch監聽
+
+- 參見[`watch.html`][watch]文件。
+
+#### 與**computed**的區别
+
+- computed需要讀取一個返回值；watch不需要。
+- computed由於要實時讀取返回值，也不能執行異步操作。
+
+### computed與watch的練習
+
+- 參見[`computed&watch.html`][computed-watch]文件。
+
+### filters過濾器
+
+- 參見[`filters.html`][filters]文件。
+- 可以`屬性 | filter | filter`的方式實現多次篩選。
+
+### filters的練習
+
+- 參見[`filters-try.html`][filters-try]文件。
+
+### 樣式
+
+- 參見[`style1.html`][style1]文件。
+- 參見[`style2.html`][style2]文件。
+
+---
+
+## 組件化開發
+
 ---
 
 ## 參考資料
@@ -134,6 +171,10 @@
 <!-- 聲明外鏈 -->
 <!-- 解說 -->
 [orig-bind]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/vue-orig%26data-bind.html
+[watch]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/watch.html
+[style1]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/style1.html
+[style2]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/style2.html
+[filters]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/filters.html
 [zhiling]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/vue-zhiling.html
 [on]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/v-on.html
 [modifiers]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/event-modifiers.html
@@ -144,8 +185,11 @@
 [for]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/v-for-multiple-times-render.html
 [for-notice]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/v-for-notice.html
 [for-notice2]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/v-for-notice2.html
+[computed]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/computed.html
 
 <!-- 練習 -->
 [zhiling-try]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E7%B7%B4%E7%BF%92/data-bind%26%E6%8C%87%E4%BB%A4.html
 [on-modifiers-try]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E7%B7%B4%E7%BF%92/v-on&event-modifiers.html
 [twoWay-if-for-try]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E7%B7%B4%E7%BF%92/two-way&v-if&v-for.html
+[computed-watch]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E7%B7%B4%E7%BF%92/computed&watch.html
+[filters-try]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E7%B7%B4%E7%BF%92/filters-try.html

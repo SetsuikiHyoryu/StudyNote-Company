@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 需求：鼠標懸停時msg中各單詞首字母變大寫-->
+        <P v-bind:title="msg | upper">{{ msg }}</P>
+
+        <!-- 需求：去掉空格 -->
+        <P>{{ msg | noSpace }}</P>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                msg: "hello world!"
+            },
+            filters: {
+                upper: function(value) {
+                    var strArr = value.toString().split(" ");
+
+                    var newWords = strArr.map(function(word) {
+                        return word.charAt(0).toUpperCase() + word.slice(1);
+                    });
+
+                    return newWords.join(" ");
+                },
+
+                noSpace: function(value) {
+                    // var strArr = value.toString().split(" ");
+
+                    // value = "";
+
+                    // for (var i = 0; i < strArr.length; i++) {
+                    //     value += strArr[i];
+                    // }
+
+                    // return value;
+
+                    //老師的方法
+                    return value.toString().replace(/ /g, "");
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

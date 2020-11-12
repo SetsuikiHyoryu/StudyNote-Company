@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 使用filters把msg中的英文全部變爲大寫。 -->
+        {{ msg | upperCase}}
+
+        <br>
+
+        <!-- filters中的方法可以寫成執行式。由於第一個參數是調用者的值，所以括號中的參數是從第二個開始算。 -->
+        {{ msg | upperCase(true)}}
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                msg: "hello world!"
+            },
+
+            filters: {
+                // 會自動注入調用了filters的屬性的值。
+                upperCase: function(value, isFirstWord) {
+                    value = value.toString();
+
+                    if (isFirstWord) {
+                        return value.charAt(0).toUpperCase() + value.slice(1);
+                    } else {
+                        return value.toUpperCase();
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

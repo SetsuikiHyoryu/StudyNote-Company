@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 在js中樣式也可以寫成無横杠的屬性（如：backgroundColor） -->
+        <div style="height: 10rem; width: 10rem;" v-bind:style="{'background-color': '#f985bb'}"></div>
+
+        <br>
+
+        <!-- 動態改變樣式 -->
+        <div style="height: 10rem; width: 10rem;" v-bind:style="{'background-color': color}"></div>
+
+        <br>
+
+        <!-- 在js中書寫style -->
+        <div style="height: 10rem; width: 10rem;" v-bind:style="styles2"></div>
+
+        <!-- 添加複數對象 -->
+        <div style="height: 10rem; width: 10rem;" v-bind:style="[styles2, styles3, {border-radius: 1rem}]"></div>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                color: "#f985bb",
+
+                styles: {
+                    // data定義時數據尚未綁定至HTML中，所以data中this無效。
+                    backgroundColor: this.color
+                }
+            },
+            computed: {
+                styles2: function() {
+                    // 返回一個對象
+                    return {
+                        backgroundColor: this.color
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 使用computed轉換數組 -->
+        <ul>
+            <li v-for="movie in showMovieOneLine">{{ movie }}</li>
+        </ul>
+
+        <!-- 添加電影時彈窗告訴用戸添加了什麼電影 -->
+        <button v-on:click="addMovie">添加電影</button>
+
+        <!-- 測試 -->
+        <!-- <p>{{ newArr }}</p> -->
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                movies: [{
+                    name: "上甘嶺",
+                    onAir: "1956"
+                }, {
+                    name: "英雄兒女",
+                    onAir: "1964"
+                }, {
+                    name: "奇襲白虎團",
+                    onAir: "1972"
+                }, {
+                    name: "横空出世",
+                    onAir: "1999"
+                }],
+
+                /* 如果v-for中不調用computed定義的showMovieOneLine屬性（即使showMovieOneLine屬性定義了返回值）而調用此處的newArr數組，則newArr數組依舊爲空。 */
+                // newArr: []
+            },
+            computed: {
+                showMovieOneLine: function() {
+                    // array.map(function(數組中當前元素的值（必填）, 當前元素的下標（可選）, 當前元素所屬的數組對象（可選）), thisValue（可選，說明暫時看不懂）)：使用注入的函數計算並返回一個調用了map方法的數組的新數組。
+                    return this.movies.map(function(movie) {
+                        return movie.name + "（" + movie.onAir + "）";
+                    });
+
+                    // 我的寫法
+                    // for (var i = 0; i < this.movies.length; i++) {
+                    //     this.newArr[i] = this.movies[i].name;
+                    // }
+                    // return this.newArr;
+                }
+            },
+            methods: {
+                addMovie: function() {
+                    // 使用array.push(item1, item2, ..., itemX)向電影數組添加電影。
+                    this.movies.push({
+                        name: "三八線上",
+                        onAir: "1960"
+                    });
+                }
+            },
+
+            // 使用watch監控moives發生的變化並告訴用戸。
+            watch: {
+                movies: function(newMovie) {
+                    alert("你添加了電影：" + newMovie[newMovie.length - 1].name)
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

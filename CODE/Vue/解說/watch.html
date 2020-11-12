@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 需求：利用搜索框進行數據請求 -->
+        <!-- 建立一個雙向綁定的輸入框讓用戸輸入數據 -->
+        <input type="text" v-model="searchInfo">
+        <!-- 用戸輸入中時顯示正在搜索 -->
+        <p v-if="showSearching">正在搜索...</p>
+
+        <!-- 建立一個接收搜索結果的列表 -->
+        <ul>
+            <li v-for="item in result">{{ item }}</li>
+        </ul>
+
+
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                searchInfo: "",
+                showSearching: false,
+                result: []
+            },
+
+            /* 向watch注入的對象：
+                - 屬性名是要監聽的數據的屬性名。
+            */
+            watch: {
+                // searchInfo改變時會執行冒號右邊的邏輯函數。
+                // 形參接收冒號左側被監視的屬性的值，可以自定義。
+                searchInfo: function(query) {
+                    this.showSearching = true;
+
+                    // this指向window的解決方法一：使用箭頭函數。因爲箭頭函數中沒有this指向，其中的this會借助父級作用域。
+                    // setTimeout(() => {});
+
+                    // this指向window的解決方法二：保存setTimeout()的父級函數中的this。
+                    var vm = this;
+
+                    // 使用異步函數模擬後臺
+                    setTimeout(function() {
+                        // 異步函數中的this因爲加載較晚，this已經不指向Vue對象而指向window了
+                        // this.result = ["html", "css", "js"]
+
+                        vm.showSearching = false;
+                        vm.result = ["html", "css", "js"]
+                    }, 500);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
