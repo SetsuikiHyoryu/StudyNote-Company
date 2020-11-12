@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-for="hero in people">
+            {{ hero.id }} {{ hero.name }}
+
+            <!-- 倒置不生效 -->
+            <input type="text">
+
+            <!-- 倒置生效 -->
+            <input type="text" v-bind:value="hero.id">
+        </div>
+
+        <!-- Vue重寫了push()方法， 它能監測到數組内部的變化。-->
+        <button v-on:click="add">添加</button>
+
+        <!-- v-for的原理是模版復用，即新增加内容時以自身爲模版進行複制。可以提高性能但存在BUG。如果模版中存在與Vue非關聯的DOM對象，倒置不會對其生效（經測試，有關聯時會生效）。由於模版復用，例子中的三個input節點會被識别爲内容相同的節點，所以不會對它們進行DOM的重新渲染。 -->
+        <!-- reverse：倒置 -->
+        <button v-on:click="reverse">reverse</button>
+
+        <!-- 可以增加key值告訴模版内容物是獨一無二的 -->
+        <div v-for="hero in people" v-bind:key="hero.id">
+            {{ hero.id }} {{ hero.name }}
+
+            <!-- 此時倒置生效 -->
+            <input type="text">
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                people: [{
+                    id: 1,
+                    name: "王兆才"
+                }, {
+                    id: 2,
+                    name: "王學鳳"
+                }, {
+                    id: 3,
+                    name: "王德明"
+                }]
+            },
+            methods: {
+                add: function() {
+                    this.people.push({
+                        id: 4,
+                        name: "毛張苗"
+                    });
+                },
+                reverse: function() {
+                    this.people.reverse();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

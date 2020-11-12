@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- data默認傳入的是字符串的好處
+            - 可以防止跨域腳本攻撃
+            - 防止用戸随意更改HTML的DOM
+        -->
+
+        <!-- v-html輸出DOM節點(慎重使用) -->
+        <div v-html="html"></div>
+
+        <!-- v-once單次渲染DOM節點 -->
+        <button v-on:click="msg = 'another'">change word</button>
+        <div v-once>
+            {{ msg }}
+        </div>
+
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                html: "<h1>hello</h1>",
+                msg: "message"
+            }
+        });
+    </script>
+</body>
+
+</html>

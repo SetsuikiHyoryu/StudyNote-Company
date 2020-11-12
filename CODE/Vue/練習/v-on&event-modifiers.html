@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 輸出内容爲輸入内容 -->
+        <input type="text" v-on:keydown="print1($event)"> outpu1: {{ result1 }}
+
+        <br>
+
+        <!-- 按回車或空格輸出内容才會是輸入内容 -->
+        <input type="text" v-on:keydown.enter.space="print2($event)"> outpu2: {{ result2 }}
+        <br>或<br>
+        <input type="text" v-on:keydown.enter.space="result2 = $event.target.value"> outpu2: {{ result2 }}
+
+        <!-- 取消submit的触發 -->
+        <form action="">
+            <input type="submit" v-on:click.prevent>
+        </form>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+
+            data: {
+                result1: null,
+                result2: null
+            },
+
+            methods: {
+                print1: function(event) {
+                    // 使用event.target獲取DOM對象的屬性
+                    this.result1 = event.target.value;
+                },
+
+                print2: function(event) {
+                    this.result2 = event.target.value;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

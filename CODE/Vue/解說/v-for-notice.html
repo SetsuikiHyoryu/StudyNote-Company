@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="n in numbers">{{ n }}</li>
+        </ul>
+
+        <!-- 點撃下方的按鈕不會改變上方列表中的數據。因爲數組是一個引用值，引用值指向内存空間，下標（索引）不變，内存空間的内存地址就不變，内存地址不變不會触發DOM節點的渲染，所以顯示内容不變。 -->
+        <button v-on:click="changeNumber">change number</button>
+
+        <!-- 在上面這種情況下強制渲染DOM節點的方法 -->
+        <!-- 使用Vue.set(目標數組, 索引, 索引所對應的值想修改成的值)以渲染DOM節點的方式修改數組中的内容 -->
+        <button v-on:click="changeNumberHard">change number</button>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                numbers: [1, 2, 3, 4, 5]
+            },
+            methods: {
+                changeNumber: function() {
+                    this.numbers[1] = 10;
+                    alert(numbers[1]);
+                },
+                changeNumberHard: function() {
+                    Vue.set(this.numbers, 1, 10);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

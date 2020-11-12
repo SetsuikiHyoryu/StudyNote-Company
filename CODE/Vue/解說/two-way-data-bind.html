@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 雙向綁定 -->
+        <!-- v-bind把JS中的數據輸出到了DOM節點上 -->
+        <!-- v-on是用戸操作DOM節點改變JS中的數據 -->
+        <input type="text" v-bind:value="outPut" v-on:input="input"> outPut: {{ outPut }}
+
+        <br>
+
+        <!-- 簡便的寫法 -->
+        <!-- v-model優先級高於節點中寫明的value屬性，即節點中寫明的value屬性會無效 -->
+        <input type="text" v-model="outPut"> v-model outPut: {{ outPut }}
+
+        <!-- v-model的事件修飾符 
+            - v-model.trim：去除輸入的空白。
+            - v-model.number：把text輸入的内容變爲數字類型，text輸入的内容默認爲字符串。
+            - v-model.lazy：失去焦點時才綁定數據。
+        -->
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+
+            data: {
+                outPut: "default",
+            },
+
+            methods: {
+                input: function(event) {
+                    this.outPut = event.target.value;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

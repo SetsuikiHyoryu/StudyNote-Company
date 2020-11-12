@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 雙向數據綁定 -->
+        <input type="password" v-model="password">OutPut: {{ password }}
+
+        <br>
+
+        <!-- v-if -->
+        <p v-if="words > 8">你的字符大於8個</p>
+        <p v-else-if="words >= 1">你有{{ words }}個字符</p>
+        <p v-else>你沒有字符</p>
+        <input v-on:input="input" placeholder="判斷字符數">
+
+
+        <!-- v-for -->
+        <ol>
+            <li v-for="hero in people">
+                {{ hero.name }} :
+                <ul>
+                    <li v-for="msg in hero.info">
+                        {{ msg }}
+                    </li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                password: "",
+                words: null,
+                people: [{
+                    name: "孔慶三",
+                    info: ["27軍", "80師", "砲兵團", "某部班長", "新興里戰鬥"]
+                }, {
+                    name: "劉慶亮",
+                    info: ["26軍", "77師", "231團", "偵察排排長", "英語流利"]
+                }, {
+                    name: "劉維漢",
+                    info: ["40軍", "120師", "358團", "某部副班長", "駐守鷹峯山"]
+                }]
+            },
+            methods: {
+                input: function(event) {
+                    this.words = event.target.value.length;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+
+    <style>
+        /* 使用v-cloak搭配屬性選擇器消除阻塞時可能出現的亂碼 */
+        
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p v-cloak>{{ msg }}</p>
+    </div>
+    <script>
+        // 設置異步模擬阻塞
+        setTimeout(function() {
+            new Vue({
+                el: "#app",
+                data: {
+                    msg: "message"
+                }
+            });
+        }, 5000);
+    </script>
+</body>
+
+</html>

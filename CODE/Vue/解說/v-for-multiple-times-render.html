@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>電影列表</h1>
+        <ul>
+            <!-- v-for列表渲染循環數組 -->
+            <!-- 語法：别名 in 表逹式 -->
+            <li v-for="title in movies">{{ title }}</li>
+
+            <br>
+
+            <!-- 獲取索引（數組） -->
+            <!-- 别名：（值形參, 鍵形參） -->
+            <li v-for="(title, index) in movies">{{ title }}({{ index }})</li>
+
+            <br>
+
+            <!-- 列表渲染循環包含對象的複雜數組 -->
+            <table>
+                <thead>
+                    <td>索引</td>
+                    <td>指戰員姓名</td>
+                    <td>職務</td>
+                    <td>部隊</td>
+                </thead>
+                <tbody>
+                    <tr v-for="(hero, index) in people">
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ hero.name }}</td>
+                        <td>{{ hero.position }}</td>
+                        <td>{{ army }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br>
+
+            <!-- 列表渲染循環對象 -->
+            <!-- 别名：（屬性值形參, 屬性名形參, 索引（下標）形參） -->
+            <div v-for="(element, prop, index) in person">
+                <!-- 輸出結果爲對象的所有屬性值 -->
+                {{ element }} |
+
+                <!-- 輸出結果爲對象的所有屬性名 -->
+                {{ prop }} |
+
+                <!-- 以鍵值對形式輸出 -->
+                {{ prop }} : {{ element }} |
+            </div>
+
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                movies: ["上甘嶺", "英雄兒女", "奇襲白虎團", "横空出世"],
+                people: [{
+                    name: "卜廣德",
+                    position: "排長"
+                }, {
+                    name: "于泮宫",
+                    position: "排長"
+                }, {
+                    name: "于喜田",
+                    position: "連長"
+                }],
+                army: "中國人民志願軍",
+                person: {
+                    firstName: "海",
+                    lastName: "王",
+                    position: "空3師9團第1大隊大隊長"
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

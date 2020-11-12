@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-if是通過幹掉無效節點來實現衹顯示一個節點的 -->
+        <!-- 衹有兄弟節點才生效 -->
+        <p v-if="items > 10">有{{ items }}個現貨</p>
+        <p v-else-if="items > 1">所剩不多了</p>
+        <p v-else>暫無庫存</p>
+
+        <!-- 兩個節點使用同一個判斷 -->
+        <template v-if="items > 50">
+            <p>注意事項</p>
+            <p>打折清庫存</p>
+        </template>
+
+        <!-- v-show實現display: none隠藏不需要的節點 -->
+        <button v-on:click="colorChange = !colorChange">change color</button>
+        <p v-show="colorChange">白</p>
+        <p v-show="!colorChange">黑</p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                items: 20,
+                colorChange: true
+            }
+        });
+    </script>
+</body>
+
+</html>

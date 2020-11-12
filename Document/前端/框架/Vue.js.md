@@ -1,4 +1,4 @@
-# Vue
+# Vue.js
 
 ## 前端框架是什麼
 
@@ -30,7 +30,7 @@
 - 學習成本較高：JSX語法
   - HTML和CSS都寫入了JS
 
-#### Vue(比對)
+#### Vue
 
 - 尤雨溪
 - 借鑒了Angular和React
@@ -86,6 +86,40 @@
 ### 數據綁定與指令的練習
 
 - 參見`data-bind&指令.html`文件。
+
+### v-on指令——事件的使用及事件修飾符
+
+- 參見`v-on.html`文件。
+- 參見`event-modifiers.html`文件。
+
+### v-on指令綁定事件及事件修飾符的練習
+
+- 參見`v-on&event-modifiers.html`文件。
+
+### 雙向數據綁定v-model
+
+- 參見`two-way-data-bind.html`文件。
+
+### 把數據變爲DOM節點
+
+- 參見`data-to-node.html`文件。
+
+#### v-if條件渲染
+
+- 參見`v-if.html`文件。
+
+### v-for循環列表渲染
+
+- 參見`v-for-multiple-times-render.html`文件。
+
+#### 注意事項
+
+- 參見`v-for-notice.html`文件。
+- 參見`v-for-notice2.html`文件。
+
+### 雙向綁定(v-model)、條件渲染(v-if)、列表渲染(v-for)的練習
+
+- 參見`two-way&v-if&v-for.html`文件。
 
 ---
 

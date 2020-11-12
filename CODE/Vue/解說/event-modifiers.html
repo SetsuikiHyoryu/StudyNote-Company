@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 不使用事件修飾符時 -->
+        <label>不使用事件修飾符</label><input type="text" v-on:keyup="keyUp">
+
+        <!-- 使用事件修飾符時 -->
+        <label>使用事件修飾符</label><input type="text" v-on:keyup.enter="keyUp2">
+
+        <!-- 也可以寫鍵名或鍵值
+            keyup.space.esc // 連續地連接時，所有修飾符都會生效
+            keyup.13
+        -->
+
+        <!-- 系統修飾符實現shift功能 -->
+        <label>使用系統修飾符</label><input type="text" v-on:keyup.shift="shift">
+
+        <!-- 系統修飾符可以綁定所有事件，即同時按shift或其他系統行爲並執行你所要執行的操作 -->
+        <button v-on:click.shift="shift">shift</button>
+
+        <!-- 系統修飾符meta。Mac上爲command鍵，Windows上爲win鍵 -->
+        <button v-on:click.meta="shift">meta</button>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            methods: {
+                keyUp: function(event) {
+                    // which 属性返回onkeypress事件触发的键的值的字符代码，或者 onkeydown 或 onkeyup 事件的键的代码。
+                    if (event.which == 13) {
+                        alert("you press enter");
+                    }
+                },
+
+                keyUp2: function(event) {
+                    alert("you press enter");
+                },
+
+                shift: function() {
+                    alert("這是系統修飾符的測試");
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

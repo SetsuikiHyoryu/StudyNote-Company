@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 屬性中調用的函數可寫括號也可以不寫，不寫時指令綁定的屬性（這裏是事件）會作爲對象被注入到Vue對象中的函數的第一個形參中 -->
+        <button v-on:click="showSome">不寫括號</button>
+
+        <!-- 如果寫括號（即函數執行模式），Vue對象中的函數想接收事件的對象，需要寫一個形參。屬性的表逹式中的函數也要寫一個特殊的實參，即“$event”（固定寫法，經測試“$”加自定義參數名會報錯）以向Vue對象中的函數注入事件對象。 -->
+        <button v-on:click="showSome($event)">寫括號加$event</button>
+
+        <!-- 不傳實參就不會向Vue對象中的函數注入事件對象 -->
+        <!-- console.log的結果爲undefined -->
+        <button v-on:click="showSome()">寫括號不寫實參</button>
+
+        <!-- 也可以注入自己需要的實參 -->
+        <button v-on:click="showSome('msg', $event)">msg</button>
+
+        <!-- 事件冒泡 -->
+        <!-- 點撃button時log中在顯示完“button”時立刻顯示“div”。 -->
+        <div v-on:click="showSome('div', $event)">
+            <button v-on:click="showSome('button', $event)">事件冒泡</button>
+        </div>
+
+        <!-- 阻止事件冒泡 -->
+        <!-- 原生：獲取event事件對象，對象中有一個stopPropagation()可以阻止冒泡 -->
+        <!-- Vue：事件屬性.事件修飾符 -->
+        <div v-on:click="showSome('div', $event)">
+            <button v-on:click.stop="showSome('button', $event)">阻止事件冒泡</button>
+        </div>
+
+        <!-- 阻止默認事件 -->
+        <a href="http://www.google.co.jp" v-on:click.prevent>阻止默認事件</a>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            methods: {
+                showSome: function(msg, event) {
+                    console.log(msg);
+                    alert("show some");
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
