@@ -164,6 +164,136 @@
 
 ## 組件化開發
 
+### 定義組件
+
+- 參見[`component.html`][component]文件。
+- 參見[`component-data.html`][component-data]文件。
+
+### 單文件組件
+
+#### 使用腳手架vue-cli
+
+[**vue-cli**官方下載點](https://github.com/vuejs/vue-cli/releases)
+
+1. 安裝`Node.js`和`npm`。
+2. 在本地計算機全局安裝`vue-cli`。
+  
+   ```bash
+   npm install -g @vue/cli
+   ```
+
+   - 可以使用`vue -V`檢查是否安裝成功。
+
+#### 創建項目
+
+- `vue init [options] <template> <app-name>`
+  - 以關聯的模版生成項目
+  - 使用`vue init`需要執行`npm i -g @vue/cli-init`命令安裝依頼。
+
+- `vue create [options] <app-name>`
+  - 新建一個項目
+
+#### 安裝依賴
+
+- 執行以下命令安裝`package.json`中定義好的依頼。
+
+  ```bash
+  npm install
+  ```
+
+  - 依頼自動安裝在項目目録下的`node_modules`中。
+
+#### 開啓測試服務器
+
+```bash
+npm run dev
+```
+
+- 會在8080端口顯示項目
+
+#### 查看項目的目録結構
+
+1. 查看`package.json`
+   - `"scripts"`：npm scripts，任務運行器（task runner）。
+     - `npm run dev`相當於輸入了`"scripts"`中的`"dev"`的屬性值。
+   - `"dependencies"`：運行時的依頼。
+   - `"browserslist"`：對瀏覽器的要求。
+   - `"devDependencies"`：開發時的依頼。
+
+2. 查看`webpack.config.js`
+   - `module.exports`：webpack會用這個配置文件導出一個東西。
+     - `entry`：項目的入口文件。
+     - `output`：輸出。
+       - `path`：打包文件的本地輸出路徑。
+       - `publicPath`：打包文件的服務器輸出路徑。
+     - `rules`：規則。對`test`的屬性值使用`use`的屬性值運行。
+     - `resolve`：如果引入的文件是`extensions`中定義的後綴名，可以不用寫後綴。
+     - `devServer`：對服務器的設置。
+
+3. 查看`index.html`
+   - `<div id="app"></div>`：用來挂載Vue實例的節點。
+   - `<script src="/dist/build.js"></script>`：引入打包後的script。
+
+4. 查看`src`目録
+   - 正式寫代碼的位置。
+   - `main.js`：入口文件。
+     - `import Vue from 'vue'`：從模組裏引入Vue。
+     - `import App from './App.vue'`：導入單文件組件並通過規則中的`vue-loader`轉換爲對象。
+     - `render`函數：最底層的模版，HTML模版和template模版最終都會用render函數去表逹。
+
+       ```javascript
+       render: h => h(App)
+  
+       // 上文即：
+       // 用App模版對象編譯一個DOM節點並挂載到id爲app的DOM節點中。
+       // h就是createElement
+       render: function(createElement) {
+         createElement(App);
+       }
+
+       // 也可以寫爲：
+       components: {
+         // 組件名: 組件對象
+         App: App
+       }
+       ```
+
+   - `App.vue`：單文件組件。
+     - `<template>`：即：
+
+       ```javascript
+       Vue.component("my-component",{
+         template:
+       });
+       ```
+
+     - `<script>`：
+
+       ```javascript
+       // data雖然寫在<script>裏了，但是必須要導出。
+       export default {
+         name: 'app',
+         data () {
+           return {
+             msg: 'Welcome to Your Vue.js App'
+           }
+         }
+       }
+
+       // 上文相當於：
+       Vue.component("my-component",{
+         name: 'app', //此值並非内置屬性
+         data () {
+           return {
+             msg: 'Welcome to Your Vue.js App'
+           }
+         }
+       });
+       ```
+
+     - `<style>`：樣式。
+       - 如果寫成`<style scoped>`則爲局部樣式，即出了組件就失效。
+
 ---
 
 ## 參考資料
@@ -174,6 +304,8 @@
 <!-- 解說 -->
 [orig-bind]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/vue-orig%26data-bind.html
 [watch]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/watch.html
+[component-data]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/component-data.html
+[component]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/component.html
 [style1]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/style1.html
 [style2]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/style2.html
 [filters]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E8%A7%A3%E8%AA%AA/filters.html
