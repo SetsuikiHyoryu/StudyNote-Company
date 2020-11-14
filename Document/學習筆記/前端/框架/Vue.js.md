@@ -280,7 +280,7 @@ npm run dev
          }
        }
 
-       // 上文相當於：
+       // 上文相當於在main.js中寫入了：
        Vue.component("my-component",{
          name: 'app', //此值並非内置屬性
          data () {
@@ -293,6 +293,107 @@ npm run dev
 
      - `<style>`：樣式。
        - 如果寫成`<style scoped>`則爲局部樣式，即出了組件就失效。
+
+---
+
+## 實䏅操作
+
+1. 使用`npm`導入`bootstrap`（不知道是否爲必須）。
+2. 在`index.html`中導入：
+
+   ```html
+   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+   ```
+
+3. 在VSCode中安裝Vetur插件（非必須）
+4. 修改`App.vue`組件（參見[`App.vue`][app.vue]）或創建自己的`xxx.vue`組件。
+   - 自定義`xxx.vue`組件衹有在`main.js`中注册了後才生效：
+
+     ```js
+     // 在main.js中寫入
+     import xxx from './xxx.vue';
+
+     // 使用component導入
+     Vue.component("ooo-xxx", xxx);
+     ```
+
+### 項目練習
+
+#### 使用全局方式創建一個文章組件
+
+1. 新建`xxx.vue`文件（參見[`Article.vue`][article.vue]文件）：
+
+   ```html
+   // xxx.vue文件骨架
+
+   <template>
+       <!-- 注意template衹能渲染一個節點，所以複數内容需要被一個根節點包裏 -->
+       <div id="xxx">
+           <!-- 具體内容 -->
+       </div>
+
+       <script>
+       export default {
+
+       }
+       </script>
+
+       <!-- 樣式爲可選件 -->
+       <style></style>
+   </template>
+   ```
+
+2. 在[`main.js`][main.js]中注册文章組件：
+
+   ```js
+   import Article from './Article.vue';
+
+   Vue.component("app-article", Article);
+   ```
+
+3. 將注册完的`app-article`組件插入到[`App.vue`][app.vue]中
+   - 即寫入`<app-article></app-article>`。
+
+4. 項目根目録（即`package.json`所在目録）的命令行下執行以下代碼啟動服務器（默認是`localhost:8080`）便可查看效果：
+
+   ```bash
+   npm run dev
+   ```
+
+   - 關閉使用`ctrl + c`（unix下可能不同）
+
+#### 使用局部方式創建一個作者組件
+
+1. 新建[`Author.vue`][author.vue]文件：
+
+2. 在[`Article.vue`][article.vue]中注册作者組件並插入：
+
+   ```html
+   <!-- 這是Article.vue裏的内容 -->
+
+   <template>
+       <div id="article">
+        <!-- 内容省略 -->
+
+        <!-- 用局部方式寫入一個作者組件 -->
+        <app-author></app-author>
+       </div>
+   </template>
+
+   <script>
+       import Author from "./Author.vue";
+
+       export default {
+           data() {
+               return {
+                   // 内容省略
+               },
+           components: {
+               "app-author": Author
+           }
+       }
+   </script>
+   ```
 
 ---
 
@@ -327,3 +428,9 @@ npm run dev
 [twoWay-if-for-try]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E7%B7%B4%E7%BF%92/two-way&v-if&v-for.html
 [computed-watch]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E7%B7%B4%E7%BF%92/computed&watch.html
 [filters-try]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E7%B7%B4%E7%BF%92/filters-try.html
+
+<!-- 項目 -->
+[app.vue]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE\Vue\項目\vue-lesson\src\App.vue
+[article.vue]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE\Vue\項目\vue-lesson\src\Article.vue
+[author.vue]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE\Vue\項目\vue-lesson\src\Author.vue
+[main.js]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE\Vue\項目\vue-lesson\src\main.js
