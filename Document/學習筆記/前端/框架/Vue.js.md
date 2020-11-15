@@ -317,6 +317,8 @@ npm run dev
      Vue.component("ooo-xxx", xxx);
      ```
 
+5. 整理文件夾
+
 ### 項目練習
 
 #### 使用全局方式創建一個文章組件
@@ -431,6 +433,6 @@ npm run dev
 
 <!-- 項目 -->
 [app.vue]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E9%A0%85%E7%9B%AE/vue-lesson/src/App.vue
-[article.vue]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E9%A0%85%E7%9B%AE/vue-lesson/src/Article.vue
-[author.vue]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E9%A0%85%E7%9B%AE/vue-lesson/src/Author.vue
-[main.js]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E9%A0%85%E7%9B%AE/vue-lesson/src/main.js
+[article.vue]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E9%A0%85%E7%9B%AE/vue-lesson/src/article/Article.vue
+[author.vue]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E9%A0%85%E7%9B%AE/vue-lesson/src/article/Author.vue
+[main.js]: https://github.com/SetsuikiHyoryu/StudyNote-Company/blob/master/CODE/Vue/%E9%A0%85%E7%9B%AE/vue-lesson/src/article/main.js
