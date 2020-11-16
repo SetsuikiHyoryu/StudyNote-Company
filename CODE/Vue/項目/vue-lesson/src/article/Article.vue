@@ -129,7 +129,8 @@
             }
         },
         components: {
-            "app-author": Author
+            "app-author": Author,
+            "app-author2": Author
         }
     }
 </script>

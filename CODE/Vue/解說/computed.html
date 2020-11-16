@@ -48,7 +48,7 @@
                         return this.lastName + " " + this.firstName;
                     },
 
-                    // 當我們在設置this.fullName2（或{{ fullName2 }}）的值的時候會走set函數。形參可自定義。
+                    // 當我們在設置this.fullName2的值的時候會走set函數。形參可自定義。
                     set: function(newValue) {
                         // 以空格爲界把字符串變爲數組
                         var arr = newValue.split(" ")
