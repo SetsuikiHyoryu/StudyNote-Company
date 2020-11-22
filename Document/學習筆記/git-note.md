@@ -56,31 +56,7 @@ git clone URL/SSH
 
 ## 三、管理本地倉庫
 
-### 1. Git Add
-
-- 將工作區的文件暫存到stage中
-  - 工作區的文件的新的修改可以與暫存的快照進行比對（git diff）。
-
-```bash
-#暫存單個已修改的文件
-git add 文件名.後綴
-
-#暫存所有已修改的文件
-git add .或者*
-
-#暫存所有某一類文件
-git add *.後綴
-```
-
-### 2. Git Commit
-
-- 將stage中的内容提交至HEAD
-
-```bash
-git commit <文件名> -m "操作的描述"
-```
-
-### Git Status
+### 1. Git Status
 
 - 詳見[*參考資料3*][status]
 - 文件與目録在工作區、暫存區（stage區）的狀態
@@ -101,7 +77,7 @@ git commit <文件名> -m "操作的描述"
   - `Untracked files`：衹在工作區中存在的文件。
     - 可以使用`git add`命令將其添加至暫存區。
 
-### Git Diff
+### 2. Git Diff
 
 - 建議查看[*參考資料1*][diff]
 
@@ -117,6 +93,30 @@ git diff --cached
 
 # 顯示當前工作區的文件和stage區的文件和上次遞交到HEAD的文件的所有差異
 git diff HEAD
+```
+
+### 3. Git Add
+
+- 將工作區的文件暫存到stage中
+  - 工作區的文件的新的修改可以與暫存的快照進行比對（git diff）。
+
+```bash
+#暫存單個已修改的文件
+git add 文件名.後綴
+
+#暫存所有已修改的文件
+git add .或者*
+
+#暫存所有某一類文件
+git add *.後綴
+```
+
+### 4. Git Commit
+
+- 將stage中的内容提交至HEAD
+
+```bash
+git commit <文件名> -m "操作的描述"
 ```
 
 ---
